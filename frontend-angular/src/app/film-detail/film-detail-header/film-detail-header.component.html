@@ -1,0 +1,13 @@
+<div class="film-detail-header">
+    <h1 class="film-detail-header__title">{{ movie.title }}</h1>
+    <div class="film-detail-header__main">
+        <div class="film-detail-header__general-grade">
+            <spectators-grade [movieId]="movie.idMovie"></spectators-grade>
+            <user-grade [movieId]="movie.idMovie"></user-grade>
+        </div>
+        <img alt="Poster" class="film-detail-header__poster" [src]="posterLink" />
+        <div>
+            <film-technical-info [movie]="movie"></film-technical-info>
+        </div>
+    </div>
+</div>

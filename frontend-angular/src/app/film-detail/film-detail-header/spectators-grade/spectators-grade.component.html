@@ -1,0 +1,6 @@
+<div class='spectators-grade'>
+    <div>Note Moyenne des spectateurs</div>
+    <div class="spectators-grade__grade" [style.color]="getGradeColor()" [style.border]="getBorderColor()">
+        {{ averageRating | number: '1.1-1' }}
+    </div>
+</div>
