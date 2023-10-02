@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<body id="bodyProfil">¤
+		<h2>Profil</h2>
+		<div id="ficheProfil">
+			<p>Mail : <span th:text="${utilisateur.mail}"></span></p>
+			<p>Mot de passe : <span th:text="${utilisateur.password}"></span></p>
+			<form name="form" th:action="@{/updatePassword}" method="post">
+				<label>Modifier mot de passe</label>
+				<input type="password" name="password"/>
+		   	 	<input type="submit"></input>
+			</form>
+			<p>Rôle : <span th:text="${utilisateur.role}"></span></p>
+			<p>Liste des lieux visités</p>
+			<ul>
+				<li th:each="monument : ${utilisateur.monuments}" th:text="${monument.nom}">
+			</ul>
+		</div>
+		<div th:if="${utilisateur.role == 'Administrateur'}">
+		  		<form th:action="@{/addMonument/checkCelebrite}" method="get">
+				  	<button type="submit" class="btn btn-primary">Ajouter Un Monument</button>
+				</form>
+		</div>
+		<form th:action="@{/deconnexion}" method="get">
+		  	<button type="submit" class="btn btn-primary">Déconnexion</button>
+		</form>
+				
+	</body>
+</html>

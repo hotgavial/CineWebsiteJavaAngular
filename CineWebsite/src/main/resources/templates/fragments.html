@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+	<title>PatrimoineFrançais.com</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet"></link>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+	<link rel="stylesheet" href="jquery-jvectormap-2.0.3.css">
+	<meta charset="UTF-8">
+</head>
+<body>
+	<header th:fragment="html_header">
+		<div id="logo">
+	         <img th:src="@{/img/logo.png}" alt="logo">
+	     </div>
+	     <div id="titreCitation">
+			<a th:href="@{/showAllMonuments}"><h1>PatrimoineFrançais.com</h1></a>
+			<p>
+				Le patrimoine est l’héritage du passé dont nous profitons 
+				aujourd’hui et que nous transmettons aux générations à venir. 
+				Nos patrimoines culturel et naturel sont deux sources irremplaçables de vie et d’inspiration.
+			</p>
+		</div>
+		<div id="espaceUtilisateur">
+			<a th:href="@{/espaceUtilisateur}"><p>Espace Utilisateur</p></a>
+		</div>
+	</header>
+	<div th:fragment="html_menu">
+		<a th:href="@{/showAllMonuments}"><p>Voir tous les monuments</p></a>
+		<a th:href="@{/showAllCelebrites}"><p>Voir toutes les celebrites</p></a>
+		<a th:href="@{/showAllDepartements}"><p>Voir tous les départements</p></a>
+		<a th:href="@{/showAllLieux}"><p>Voir tous les lieux</p></a>
+	</div>
+</body>

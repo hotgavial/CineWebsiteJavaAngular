@@ -1,0 +1,112 @@
+body
+{
+	font-family: arial;
+}
+
+h2
+{
+	color:red;
+	text-align: center;
+}
+
+#logo img {
+	width: 100px;
+	margin-left: 5px;
+}
+
+#titreCitation {
+	width: 35%;
+}
+
+header
+{
+	display: flex;
+	background-color: brown;
+	justify-content: space-between;
+	border: solid black 2px;
+	align-items: center;
+}
+
+body
+{
+	background-color: beige;
+}
+
+#titreCitation
+{
+	text-align: center;
+}
+
+#titreCitation p
+{
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+td
+{
+	border : solid black 2px;
+	text-align: center;
+	padding: 5px;
+}
+
+table 
+{
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#espaceUtilisateur
+{
+	margin-right: 5px;
+	border: blue solid 2px;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: coral;
+	font-weight: bold;
+}
+
+#upperForm
+{
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin:auto;
+}
+
+#upperForm label
+{
+	margin-top: 5px;
+}
+
+#ficheMonument
+{
+	background-color: white;
+	font-weight: bold;
+	text-align: center;
+	border: red solid 3px;
+	
+}
+
+#ficheProfil
+{
+	background-color: white;
+	font-weight: bold;
+	text-align: center;
+	border: red solid 3px;
+}
+
+#maindivcheckcelebrites
+{
+	text-align: center;
+}
+
+#bodyProfil
+{
+	text-align: center;
+}
+
+a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Removes the color */
+}

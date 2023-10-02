@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+<body>
+	<header th:replace="fragments :: html_header">
+	</header>
+		<h2>S'inscrire</h2>
+		<form th:action="@{/saveUtilisateur}" th:object="${utilisateur}" method="POST">
+			<div id="upperForm">
+			<label for="mail">Mail</label>
+			<input type="text" th:field="${utilisateur.mail}" id="mail" />
+			<label for="password">Mot de passe</label>
+			<input type="password" th:field="${utilisateur.password}" id="password" />
+
+			<input type="submit" value="Valider">
+		</form>	
+	</body>
+</html>

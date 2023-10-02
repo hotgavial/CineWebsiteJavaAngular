@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<div th:replace="fragments :: html_menu">
+	</div>
+	<body>
+		<h2>Tous les départements</h2>
+		<form name="formDepartements" th:action="@{/searchDepartement}" method="get">
+		    <input type="text" name="search"/>
+		    <input type="submit"></input>
+		</form>
+		<table>	
+			<tr>
+				<th>Code</th>
+				<th>Nom</th>
+				<th>Chef Lieu</th>
+			</tr>
+			
+			<tr th:each="departement : ${departements}">
+				<td th:text="${departement.dep}"></td>
+				<td><a th:href="@{/departement/{id}(id=${departement.dep})}" th:text="${departement.nomDep}"></a></td>
+				<td th:text="${departement.chefLieu}"></td>
+			</tr>
+		</table>
+	
+	</body>
+</html>

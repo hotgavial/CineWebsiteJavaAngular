@@ -1,0 +1,25 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<h2 th:text="${departement.nomDep}"></h2>
+		<div id="ficheMonument">
+			<p>Code: <span th:text="${departement.dep}"></span><p>
+			<p>Chef Lieu : <span th:text="${departement.chefLieu}"></span><p>
+			<p>Lieux : </p>
+			<ul>
+				<li th:each="lieu : ${departement.lieux}" ><a th:text="${lieu.nomCom}" th:href="@{'/lieu/' + ${lieu.codeInsee}}"></a></li>
+			</ul>
+			<p>Monuments : </p>
+			<ul>
+				<div th:each="lieu : ${departement.lieux}">
+		            <li th:each="monument : ${lieu.monuments}"> <a th:text="${monument.nom}" th:href="@{'/monument/' + ${monument.codeM}}"></a></li>
+			    </div>
+			</ul>
+		</div>
+	</body>
+</html>

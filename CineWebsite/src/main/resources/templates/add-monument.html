@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+<body>
+	<header th:replace="fragments :: html_header">
+	</header>
+		<h2>Ajouter Monument</h2>
+		<form th:action="@{/saveMonument}" th:object="${monument}" method="POST">
+			<div id="upperForm">
+			<label for="nom">Nom</label>
+			<input type="text" th:field="${monument.nom}" id="nom" />
+			
+			<label for="proprietaire">Propriétaire</label>
+			<select th:field="${monument.proprietaire}" id="proprietaire">
+				<option th:value="PUBLIC">PUBLIC</option>	
+				<option th:value="PRIVE">PRIVE</option>	
+			</select>
+			
+			<label for="typeMonument">Type de Monument</label>
+			<input type="text" th:field="${monument.typeMonument}" id="typeMonument" />
+			<label for="longitude">longitude</label>
+			<input type="text" th:field="${monument.longitude}" id="longitude" />
+			<label for="latitude">latitude</label>
+			<input type="text" th:field="${monument.latitude}" id="latitude" />
+			<label for="lieu">code Insee</label>
+			<input type="text" th:field="${monument.lieu}" id="lieu" />
+			<label for="celebrites">Celebrités</label>
+			<select th:field="${monument.celebrites}" multiple>
+				<option th:each="celebrite : ${listCelebrites}" th:text="${celebrite.nom} + ' ' + ${celebrite.prenom}" th:value="${celebrite.numCelebrite}"/></option>
+			</select>
+			<input type="submit" value="Valider">
+			</div>
+		</form>
+		<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+		<script>
+    		new MultiSelectTag('celebrites')  // id
+		</script>
+	</body>
+</html>

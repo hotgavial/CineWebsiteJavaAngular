@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<div th:replace="fragments :: html_menu">
+	</div>
+	<body>
+		<h2>Tous les lieux</h2>
+		<form name="formLieu" th:action="@{/searchLieu}" method="get">
+		    <input type="text" name="search"/>
+		    <input type="submit"></input>
+		</form>
+		<table>	
+			<tr>
+				<th>Nom Commune</th>
+				<th>Longitude</th>
+				<th>Latitude</th>
+				<th>Département<th>
+			</tr>
+			
+			<tr th:each="lieu : ${lieux}">
+				<td><a th:href="@{/lieu/{id}(id=${lieu.codeInsee})}" th:text="${lieu.nomCom}"></a></td>
+				<td th:text="${lieu.longitude}"></td>
+				<td th:text="${lieu.latitude}"></td>
+				<td th:text="${lieu.dep.dep} + ' ' + ${lieu.dep.nomDep} "></td>
+			</tr>
+		</table>
+	
+	</body>
+</html>

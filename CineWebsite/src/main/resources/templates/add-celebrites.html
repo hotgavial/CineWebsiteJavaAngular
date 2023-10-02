@@ -1,0 +1,22 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+	<head th:replace="fragments :: html_head">
+	</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<body>
+		<h2>Ajouter Célébrité</h2>
+		<form th:action="@{/saveCelebrite}" th:object="${celebrite}" method="POST">
+			<label for="nom">Nom</label>
+			<input type="text" th:field="${celebrite.nom}" id="nom" />
+			<label for="prenom">Prenom</label>
+			<input type="text" th:field="${celebrite.prenom}" id="prenom" />
+			<label for="nationalite">Nationalité</label>
+			<input type="text" th:field="${celebrite.nationalite}" id="nationalite" />
+			<label for="epoque">Epoque</label>
+			<input type="text" th:field="${celebrite.epoque}" id="epoque" />
+			<input type="submit" value="Valider">
+		</form>
+	
+	</body>
+</html>

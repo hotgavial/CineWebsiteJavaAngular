@@ -1,0 +1,18 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<body>
+		<h2 th:text="${celebrite.prenom} + ' ' + ${celebrite.nom}"></h2>
+		<div id="ficheMonument">
+			<p>Nationalité : <span th:text="${celebrite.nationalite}"><span><p>
+			<p>Epoque : <span th:text="${celebrite.epoque}"><span><p>
+			<p>Monuments associés : </p>
+			<ul>
+				<li th:each="monument : ${celebrite.monuments}"><a th:text="${monument.nom}" th:href="@{'/monument/' + ${monument.codeM}}"></a></li>
+			</ul>
+		</div>
+	</body>
+</html>

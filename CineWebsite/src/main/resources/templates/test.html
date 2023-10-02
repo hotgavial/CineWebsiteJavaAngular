@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<body>
+		<script src="jquery-3.2.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/jquery-jvectormap-2.0.3.min.js"></script>
+		<script src="jquery-jvectormap-fr-merc.js"></script>
+		<div>
+		    <select id="map-selector" name="departements" multiple="multiple">
+		        <option th:each="departement : ${departements}" th:value="'FR-' + ${departement.dep}" th:text="${departement.nomDep}"></option>
+		    </select>
+		</div>
+		<script>
+		$(document).ready(function () {
+		    //on masque le select classique
+		    $("#map-selector").css("display", "none");
+		    //on ajoute un div #container-map-selector qui contiendra la carte
+		    $("#map-selector").parent().append("<div id='container-map-selector'></div>");
+		    //on initie la carte sur cet élément
+		    var map = new jvm.Map({
+		        container: $("#container-map-selector"),
+		        map: 'fr_merc',
+		        regionsSelectable: true,
+		       //à chaque clic sur un département
+		        onRegionSelected: function () {
+		            //on vide le select
+		            $("#map-selector").val("");
+		            //et on sélectionne chaque options correspondant au département sélectionné sur la carte
+		            $.each(map.getSelectedRegions(), function (index, region) {
+		                $("#map-selector option[value=" + region + "]").prop("selected", true);
+		            });
+		        }
+		    });
+		    //au départ si des options du select sont présélectionnés, on les sélectionnes sur la carte
+		    $("#map-selector option:selected").each(function () {
+		        map.setSelectedRegions($(this).val());
+		    });
+		});
+		</script>
+	</body>
+</html>

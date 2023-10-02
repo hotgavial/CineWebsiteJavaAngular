@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+<body>
+	<header th:replace="fragments :: html_header">
+	</header>
+		<h2>Ajouter Lieu</h2>
+		<form th:action="@{/saveLieu}" th:object="${lieu}" method="POST">
+			<div id="upperForm">
+			<label for="codeinsee">Code Insee</label>
+			<input type="text" th:field="${lieu.codeInsee}" id="codeinsee" />
+			
+			<label for="nomCom">Nom Commune</label>
+			<input type="text" th:field="${lieu.nomCom}" id="nomCom" />
+			
+			<label for="longitude">longitude</label>
+			<input type="text" th:field="${lieu.longitude}" id="longitude" />
+			<label for="latitude">latitude</label>
+			<input type="text" th:field="${lieu.latitude}" id="latitude" />
+			<label for="departement">Département</label>
+			<select th:field="${lieu.dep}">
+				<option th:each="departement : ${listDepartements}" th:text="${departement.dep} + ' ' + ${departement.nomDep}" th:value="${departement.dep}"/></option>
+			</select>
+			<input type="submit" value="Valider">
+			</div>
+		</form>
+	</body>
+</html>

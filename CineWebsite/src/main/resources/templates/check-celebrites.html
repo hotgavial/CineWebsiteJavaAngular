@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+<body>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<div id="maindivcheckcelebrites">
+		<h2>Vérifiez si toutes les célébrités à associer sont bien présentes</h2>
+		<form>
+			<input type="text" id="checkCelebrite">
+		</form>
+		<div id="listCelebrites">
+		
+			
+		</div>
+		<a th:href="@{'/addCelebrite'}">
+			<button>Ajouter Célébrité</button>
+		</a>	
+		<h2>Vérifiez si le lieu à associer est bien présent</h2>
+		<form>
+			<input type="text" id="checkLieu">
+		</form>
+		<div id="listLieux">
+			
+		</div>
+		<a th:href="@{'/addLieu'}">
+			<button>Ajouter Lieu</button>
+		</a>	
+	</div>
+	<a th:href="@{'/addMonument/add'}">
+			<button>Tout est ok ! Ajouter un Monument</button>
+		</a>	
+	<script>
+	$(document).ready(function() {
+			$("#checkCelebrite").keyup(function() {
+					val = "";
+					val = $(this).val();
+					console.log(val);
+					if(val == "") {
+						$("#listCelebrites").empty();	
+					} else {
+						$.ajax({
+						type: "GET",
+						url: "http://localhost:8080/checkCelebrites?value=" + val,
+						success: function (data) {
+							$("#listCelebrites").empty();	
+							$("#listCelebrites").append(data);	
+						}
+						});
+					}	
+			});
+			$("#checkLieu").keyup(function() {
+					val = "";
+					val = $(this).val();
+					console.log(val);
+					if(val == "") {
+						$("#listLieux").empty();	
+					} else {
+						$.ajax({
+						type: "GET",
+						url: "http://localhost:8080/checkLieux?value=" + val,
+						success: function (data) {
+							$("#listLieux").empty();	
+							$("#listLieux").append(data);	
+						}
+				});
+					}
+					
+			});
+		});
+	</script>
+</body>
+</html>

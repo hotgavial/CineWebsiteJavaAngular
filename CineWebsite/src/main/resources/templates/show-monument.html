@@ -1,0 +1,36 @@
+<!doctype html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+</head>
+	<header th:replace="fragments :: html_header">
+	</header>
+	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<h2 th:text="${monument.nom}"></h2>
+		<div id="ficheMonument">
+			<p>Propriétaire : <span th:text="${monument.proprietaire}"></span></p>
+			<p>Type de monument : <span th:text="${monument.typeMonument}"></span></p>
+			<p>Longitude : <span th:text="${monument.longitude}"></span></p>
+			<p>Latitude : <span th:text="${monument.latitude}"></span></p>
+			<p>CodeInsee : <span th:text="${monument.lieu.codeInsee}"></span></p>
+			<p>Ville : <a th:text="${monument.lieu.nomCom}" th:href="@{'/lieu/' + ${monument.lieu.codeInsee}}"></a></p>
+			<p>Département : <a th:text="${monument.lieu.dep.nomDep}" th:href="@{'/departement/' + ${monument.lieu.dep.dep}}"></a></p>
+			<p th:each="monument : ${monuments}">
+			<p>Célébrites : </p>
+			<ul>
+				<li th:each="celebrite : ${monument.celebrites}" ><a th:text="${celebrite.prenom} + ' ' + ${celebrite.nom}" th:href="@{'/celebrite/' + ${celebrite.numCelebrite}}"></a></li>
+			</ul>
+		</div>
+		<button id="addVisite">Noter le monument comme visité</button>
+		<script th:inline="javascript">
+			$(document).ready(function() {
+			$("#addVisite").click(function() {
+					$.ajax({
+					type: "POST",
+					url: "http://localhost:8080/addVisite/" + [[${monument.codeM}]]				
+				});
+			});
+		});
+		</script>
+	</body>
+</html>
